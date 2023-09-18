@@ -84,7 +84,7 @@ db_cursor = db_connection.cursor()
 
 # Create table if it doesn't exist
 db_cursor.execute("""
-    CREATE TABLE IF NOT EXISTS items (
+    CREATE TABLE IF NOT EXISTS elg262iwly95buvr (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         description TEXT
@@ -103,7 +103,7 @@ async def create_item(item: Item):
 
 @app.get("/items/{item_id}", response_model=Item)
 async def read_item(item_id: int):
-    query = "SELECT id, name, description FROM items WHERE id = %s"
+    query = "SELECT id, name, description FROM elg262iwly95buvr WHERE id = %s"
     db_cursor.execute(query, (item_id,))
     item = db_cursor.fetchone()
     if item is None:
@@ -112,14 +112,14 @@ async def read_item(item_id: int):
 
 @app.get("/items/", response_model=list[Itemget])
 async def read_items():
-    query = "SELECT id, name, description FROM items"
+    query = "SELECT id, name, description FROM elg262iwly95buvr"
     db_cursor.execute(query)
     items = [{"id": str(item[0]), "name": item[1], "description": item[2]} for item in db_cursor.fetchall()]
     return items
 
 @app.put("/items/{item_id}", response_model=Item)
 async def update_item(item_id: int, item: Item):
-    query = "UPDATE items SET name = %s, description = %s WHERE id = %s"
+    query = "UPDATE elg262iwly95buvr SET name = %s, description = %s WHERE id = %s"
     values = (item.name, item.description, item_id)
     db_cursor.execute(query, values,)
     db_connection.commit()
@@ -127,7 +127,7 @@ async def update_item(item_id: int, item: Item):
 
 @app.delete("/items/{item_id}", response_model=dict)
 async def delete_item(item_id: int):
-    query = "DELETE FROM items WHERE id = %s"
+    query = "DELETE FROM elg262iwly95buvr WHERE id = %s"
     db_cursor.execute(query, (item_id,))
     db_connection.commit()
     return {"message": "Item deleted"}
