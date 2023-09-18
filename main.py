@@ -61,10 +61,11 @@ app = FastAPI()
 
 # Database connection configuration
 db_config = {
-    "user": "root",
-    "password": "",
-    "host": "localhost",
-    "database": "testcrud",
+    "user": "d2kkama3lnzcgxb2",
+    "password": "zn5ek2xcg2lt8ci8",
+    "host": "cis9cbtgerlk68wl.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "database": "elg262iwly95buvr",
+    "Port" : "3306"
 }
 
 # Model for the item
